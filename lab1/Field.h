@@ -1,3 +1,12 @@
+#ifndef FIELD_H
+#define FIELD_H
+
+#include <iostream>
+#include <random>
+#include <conio.h>
+#include <stdio.h>
+#include <time.h>
+using namespace std;
 class Field {
     int W, H;
     char** field;
@@ -62,3 +71,4 @@ public:
         return this->field[x][y];
     }
 };
+#endif

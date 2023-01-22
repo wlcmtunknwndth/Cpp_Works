@@ -1,3 +1,7 @@
+#ifndef UNIT_H
+#define UNIT_H
+
+#include "Field.h"
 class Unit {
 protected:
     int coins;
@@ -404,3 +408,5 @@ public:
         return true;
     }
 };
+
+#endif
