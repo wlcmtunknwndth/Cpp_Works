@@ -62,7 +62,7 @@ public:
         this->field.newCh(this->x, this->y, 'K');
     }
     
-    void scan(int x1, int  y1)
+    char autoStep(int x1, int  y1)
     {
         // heuristic: f(x) = g(x) + h(x)
         // g(x) = |x_current - x|^2 + |y_current - y|
@@ -73,34 +73,74 @@ public:
 
         int euristic[8]=
 { 
-abs(x1 - (x_current-1))*abs(x1 - (x_current-1)) + abs(y1 - (y_current-1))*abs(y1 - (y_current-1)), 
-abs(x1 - (x_current))*abs(x1 - (x_current)) + abs(y1 - (y_current-1))*abs(y1 - (y_current-1)),
-abs(x1 - (x_current+1))*abs(x1 - (x_current+1)) + abs(y1 - (y_current-1))*abs(y1 - (y_current-1)), 
+abs(x1 - (x_current-1))*abs(x1 - (x_current-1)) + abs(y1 - (y_current-1))*abs(y1 - (y_current-1)), //y
+abs(x1 - (x_current))*abs(x1 - (x_current)) + abs(y1 - (y_current-1))*abs(y1 - (y_current-1)), // u
+abs(x1 - (x_current+1))*abs(x1 - (x_current+1)) + abs(y1 - (y_current-1))*abs(y1 - (y_current-1)), // i
 
-abs(x1 - (x_current-1))*abs(x1 - (x_current-1)) + abs(y1 - (y_current))*abs(y1 - (y_current)), 
-abs(x1 - (x_current+1))*abs(x1 - (x_current+1)) + abs(y1 - (y_current))*abs(y1 - (y_current)), 
+abs(x1 - (x_current-1))*abs(x1 - (x_current-1)) + abs(y1 - (y_current))*abs(y1 - (y_current)), // h
+abs(x1 - (x_current+1))*abs(x1 - (x_current+1)) + abs(y1 - (y_current))*abs(y1 - (y_current)), // k
 
-abs(x1 - (x_current-1))*abs(x1 - (x_current-1)) + abs(y1 - (y_current+1))*abs(y1 - (y_current+1)), 
-abs(x1 - (x_current))*abs(x1 - (x_current)) + abs(y1 - (y_current+1))*abs(y1 - (y_current+1)), 
-abs(x1 - (x_current+1))*abs(x1 - (x_current+1)) + abs(y1 - (y_current+1))*abs(y1 - (y_current+1))
+abs(x1 - (x_current-1))*abs(x1 - (x_current-1)) + abs(y1 - (y_current+1))*abs(y1 - (y_current+1)), // b
+abs(x1 - (x_current))*abs(x1 - (x_current)) + abs(y1 - (y_current+1))*abs(y1 - (y_current+1)), // n
+abs(x1 - (x_current+1))*abs(x1 - (x_current+1)) + abs(y1 - (y_current+1))*abs(y1 - (y_current+1)) // m 
 };
 
-    int min = INT_MAX;
-    // for (int i = 0; i < 8; i++)
-    // {
-    //     cout << " " << euristic[i];
-    // }
-    
-    for (int i: euristic)
-    {
-        if (i < min) {
-            min = i;
-        }
-        cout << endl << i;
-    }
-
-    cout << endl << "The min element is " << min << std::endl;
+        int min = INT_MAX;
+        // for (int i = 0; i < 8; i++)
+        // {
+        //     cout << " " << euristic[i];
+        // }
+        int counter = -1;
         
+        for (int i: euristic)
+        {
+            if (i < min) 
+            {
+                counter++;
+                min = i;
+            }
+            cout << endl << i;
+        }
+
+        cout << endl << "The min element is " << min << std::endl << counter;
+        char step;
+        //choose way
+        switch (counter)
+        {
+            case 0:
+            step = 'y';
+            break;
+
+            case 1:
+            step = 'u';
+            break;
+
+            case 2:
+            step = 'i';
+            break;
+
+            case 3:
+            step = 'h';
+            break;
+
+            case 4:
+            step = 'k';
+            break;
+
+            case 5:
+            step = 'b';
+            break;
+
+            case 6:
+            step = 'n';
+            break;
+
+            case 7:
+            step = 'm';
+            break;
+        }
+        cout << step;
+        return step;
     }
 
     void createGraph() override

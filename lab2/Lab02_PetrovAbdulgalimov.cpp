@@ -11,6 +11,9 @@ int main()
     f.output();
     K.createGraph();
     K.printGraph();
-    K.scan(0, 0);
+    // K.autoStep(0, 0);
+    char tmp = K.autoStep(0, 0);
+    cout << endl << "idk" << tmp << "idk";
+    K.move(K.autoStep(0, 0));
     return 0;
 }
