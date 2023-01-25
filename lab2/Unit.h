@@ -8,9 +8,9 @@ protected:
     int coins;
     int hp;
     int x, y;
-    int* x_e, y_e; 
     Field field;
     int** graph; 
+    Unit* Enemy; 
 
 public:
     Unit(Field field, int x0, int y0) {
@@ -21,7 +21,7 @@ public:
         this->hp = 3;
     }
 
-
+    virtual void makeEnemy(Unit f) = 0;
     virtual bool move(char key) = 0;
 
     virtual void createGraph() = 0;
@@ -62,6 +62,12 @@ public:
         this->field.newCh(this->x, this->y, 'K');
     }
     
+    virtual void makeEnemy(Unit Envy)
+    {
+        Enemy = &(Envy);
+        
+    }
+
     char autoStep(int x1, int  y1)
     {
         // heuristic: f(x) = g(x) + h(x)
