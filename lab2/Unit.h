@@ -62,10 +62,9 @@ public:
         this->field.newCh(this->x, this->y, 'K');
     }
     
-    virtual void makeEnemy(Unit Envy)
+    void makeEnemy(Unit Envy)
     {
         Enemy = &(Envy);
-        
     }
 
     char autoStep(int x1, int  y1)
