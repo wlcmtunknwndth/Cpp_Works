@@ -8,8 +8,8 @@ int main()
     f.Empty();
     f.output();
     King K(f, 5, 2);
-    King Enemy1(f, 0, 0);
-    K.makeEnemy(Enemy1);
+    King Enemy(f, 0, 0);
+    K.makeEnemy(Enemy);
     f.output();
     K.createGraph();
     K.printGraph();

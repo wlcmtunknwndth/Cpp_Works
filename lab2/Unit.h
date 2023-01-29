@@ -10,7 +10,7 @@ protected:
     int x, y;
     Field field;
     int** graph; 
-    Unit* Enemy; 
+    Unit* Enemy = nullptr; 
 
 public:
     Unit(Field field, int x0, int y0) {
@@ -62,7 +62,7 @@ public:
         this->field.newCh(this->x, this->y, 'K');
     }
     
-    void makeEnemy(Unit Envy)
+    void makeEnemy(Unit Envy) override
     {
         Enemy = &(Envy);
     }
